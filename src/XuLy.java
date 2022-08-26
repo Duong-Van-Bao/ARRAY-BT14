@@ -17,6 +17,8 @@ public class XuLy {
      } else {
     	 System.out.println("Mảng không đối xứng");
      }
+     a = xoayTrai(a, scan);
+     xuatMang(a);
 	}
 
 	public static int[] nhapMang(Scanner scan, int n) {
@@ -51,5 +53,26 @@ public class XuLy {
 			} 
 		}
 		return true;
+	}
+	
+	public static int[] xoayTrai(int a[], Scanner scan) {
+		int k;
+		int tam;
+		do {
+			System.out.println("Vui lòng nhập k > 0");
+			k = Integer.parseInt(scan.nextLine());
+		} while(k < 0);
+		
+		k  %= a.length;
+		for(int i = 0; i < k; i++) {
+		   //Tạo biến tạm lưu trữ a[0]
+			tam = a[0];
+			//Duyệt và chép đè phần tử thứ a[i+1] lên a[i]
+			for(int j = 0; j < a.length -1; j++) {
+				a[j] = a[j+1];
+			}
+			a[a.length-1] = tam;
+		}
+		return a;
 	}
 }
